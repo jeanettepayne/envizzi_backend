@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+wedding = Board.create(title: "Wedding Inspo")
+career = Board.create(title: "Career Goals")
+nursery = Board.create(title: "Nursery Vision")
+
+
+dress = Item.create(name: "Hayley Paige", board_id: 1)
