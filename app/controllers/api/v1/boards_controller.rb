@@ -8,7 +8,7 @@ class Api::V1::BoardsController < ApplicationController
     def create
         board = Board.new(board_params)
         if board.save
-            render json: board, status: :accepted
+            render json: BoardSerializer.net(board), status: :accepted
         else
             render json: {errors: board.errors.full_messages}, status: :unprocessable_entity
         end
