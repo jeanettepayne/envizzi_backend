@@ -14,6 +14,10 @@ class Api::V1::BoardsController < ApplicationController
         end
     end
 
+    def edit
+        board = Board.find_by(title: params[:title])
+    end
+
     private
 
     def board_params
