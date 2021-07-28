@@ -6,6 +6,7 @@ class Api::V1::BoardsController < ApplicationController
     end
 
     def create
+        byebug
         board = Board.new(board_params)
         if board.save
             render json: BoardSerializer.new(board), status: :accepted
@@ -21,6 +22,6 @@ class Api::V1::BoardsController < ApplicationController
     private
 
     def board_params
-        params.require(:board).permit(:title)
+        params.require(:board).permit(:title, :items)
     end
 end
