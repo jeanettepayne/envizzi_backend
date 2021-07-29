@@ -6,8 +6,18 @@ class Api::V1::BoardsController < ApplicationController
     end
 
     def create
-        byebug
-        board = Board.new(board_params)
+        # byebug
+        # board = Board.new(board_params)
+        # if board.save
+        #     render json: BoardSerializer.new(board), status: :accepted
+        # else
+        #     render json: {errors: board.errors.full_messages}, status: :unprocessable_entity
+        # end
+        board = Board.new(title: params[:title])
+        params[:board][:items].each do |item|
+            board.items.build(name: item)
+        end
+
         if board.save
             render json: BoardSerializer.new(board), status: :accepted
         else
