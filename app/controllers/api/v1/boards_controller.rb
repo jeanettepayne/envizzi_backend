@@ -13,7 +13,7 @@ class Api::V1::BoardsController < ApplicationController
         # else
         #     render json: {errors: board.errors.full_messages}, status: :unprocessable_entity
         # end
-        board = Board.new(title: params[:title])
+        board = Board.new(title: params[:board][:title])
         params[:board][:items].each do |item|
             board.items.build(name: item)
         end
@@ -32,6 +32,6 @@ class Api::V1::BoardsController < ApplicationController
     private
 
     def board_params
-        params.require(:board).permit(:title, items: [:name])
+        params.require(:board).permit(:title, items: [])
     end
 end
