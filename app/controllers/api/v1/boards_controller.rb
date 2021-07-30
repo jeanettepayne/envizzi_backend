@@ -22,6 +22,12 @@ class Api::V1::BoardsController < ApplicationController
         board = Board.find_by(title: params[:title])
     end
 
+    def destroy
+        board = Board.find_by(params[:id])
+        board.destroy
+        render json: BoardSerializer.new(board)
+    end
+
     private
 
     def board_params
