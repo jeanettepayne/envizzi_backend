@@ -18,14 +18,10 @@ class Api::V1::BoardsController < ApplicationController
         end
     end
 
-    def edit
-        board = Board.find_by(title: params[:title])
-    end
-
     def destroy
-        board = Board.find_by(params[:id])
+        board = Board.find_by(id: params[:id])
         board.destroy
-        render json: BoardSerializer.new(board)
+        render json: board
     end
 
     private
